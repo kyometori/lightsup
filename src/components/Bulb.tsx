@@ -1,8 +1,15 @@
 import style from './Bulb.module.css'
 
-function Bulb() {
+interface BulbProps {
+  on: boolean
+  x: number
+  y: number
+  onClick: (x: number, y: number) => void
+}
+
+function Bulb({ on, x, y, onClick }: BulbProps) {
   return (
-    <div className={style.bulb}>
+    <div onClick={() => onClick(x, y)} className={on ? style.bulbOn: style.bulbOff}>
     </div>
   )
 }

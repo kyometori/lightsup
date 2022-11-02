@@ -1,5 +1,17 @@
 .bulb {
   width: 70px;
   height: 70px;
-  background-color: black;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.bulbOn {
+  composes: bulb;
+  background-color: hsl(50, 50%, 80%);
+}
+
+.bulbOff {
+  composes: bulb;
+  background-color: hsl(30, 50%, 60%);
 }

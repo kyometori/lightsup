@@ -1,9 +1,9 @@
 #board {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-  background-color: chocolate;
-  padding: 10px;
+  gap: 10px;
+  background-color: hsl(40, 80%, 40%);
+  padding: 14px;
   border-radius: 5px;
-  width: calc(70px * 5 + 8px * 4 + 10px * 2);
+  width: calc(70px * 5 + 10px * 4);
 }
