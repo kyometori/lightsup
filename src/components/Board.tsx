@@ -1,4 +1,4 @@
-import { Bulb } from './Bulb'
+import { Bulb } from './Bulb' 
 import style from './Board.module.css'
 
 interface BoardProps {
@@ -11,7 +11,13 @@ function Board({ board, flip }: BoardProps) {
     <>
       <div id={style.board}>
         {board.flat().map((k, i) => (
-          <Bulb onClick={flip} x={~~(i/5)} y={i%5} on={k} key={i} />
+          <Bulb 
+            x={~~(i/5)} 
+            y={i%5} 
+            onClick={flip} 
+            on={k} 
+            key={i} 
+          />
         ))}
       </div>
     </>

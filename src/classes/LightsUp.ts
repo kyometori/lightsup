@@ -1,7 +1,7 @@
 class LightsUp {
   public board: boolean[][] = []
-  private answer: boolean[][] = []
-  public state: number = 0;
+  private answer: number = 0
+  public state: number = 0
   private readonly boardSize: number = 5
   
   constructor() {
@@ -11,10 +11,8 @@ class LightsUp {
   private init() {
     for (const i of [0, 1, 2, 3, 4]) {
       this.board.push([])
-      this.answer.push([])
       for (const _ of [0, 1, 2, 3, 4]) { 
         this.board[i].push(true)
-        this.answer[i].push(false)
       }
     }
     
@@ -32,10 +30,21 @@ class LightsUp {
   }
   
   public flip(x: number, y: number) {
-    this.board[x][y] = !this.board[x][y]
+    [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([dr, dc]) => {
+      const nr = x + dr, nc = y + dc
+      if (0 <= nr && nr < this.boardSize && 0 <= nc && nc < this.boardSize) {
+        this.board[nr][nc] = !this.board[nr][nc]
+        this.state ^= 2**(nr*5 + nc)
+      }
+    })
     
-    this.state = this.state ^ 2**(x*5+y)
-    console.log(this.state)
+    this.answer ^= 2**(x*5 + y)
+  }
+  
+  public getHint() {
+    if (this.answer === 0) return -1
+    const i = this.answer & ~(this.answer - 1)
+    return Math.log2(i)
   }
   
   public getBoardSize() { return this.boardSize }

@@ -1,9 +1,10 @@
 import { Board } from './components/Board'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { LightsUp } from './classes/LightsUp'
 
+const game = new LightsUp()
+
 function App() {
-  const { current: game } = useRef(new LightsUp())
   const [, setValue] = useState(true)
   
   const handleFlip = (x: number, y: number) => {
