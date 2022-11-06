@@ -2,6 +2,7 @@ class LightsUp {
   public board: boolean[][] = []
   private answer: number = 0
   public state: number = 0
+  public moveCount: number = 0
   private readonly boardSize: number = 5
   
   constructor() {
@@ -27,6 +28,8 @@ class LightsUp {
         if (randomInt(0, 1)) { this.flip(i, j) }
       }
     }
+    
+    this.moveCount = 0
   }
   
   public flip(x: number, y: number) {
@@ -39,6 +42,8 @@ class LightsUp {
     })
     
     this.answer ^= 2**(x*5 + y)
+    
+    ++this.moveCount
   }
   
   public getHint() {

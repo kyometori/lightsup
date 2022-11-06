@@ -1,10 +1,10 @@
 import { Board } from './components/Board'
-import { useState } from 'react'
-import { LightsUp } from './classes/LightsUp'
-
-const game = new LightsUp()
+import { Toolbar } from './components/Toolbar'
+import { useState, useContext } from 'react'
+import { Game } from './components/Game'
 
 function App() {
+  const game = useContext(Game)
   const [, setValue] = useState(true)
   
   const handleFlip = (x: number, y: number) => {
@@ -15,6 +15,7 @@ function App() {
   return (
     <>
       <h1>Lights Up!</h1>
+      <Toolbar refresh={() => setValue(v => !v)} />
       <Board board={game.board} flip={handleFlip} />
     </>
   );
