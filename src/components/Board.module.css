@@ -1,9 +1,74 @@
 #board {
   display: grid;
+  position: relative;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   background-color: hsl(40, 80%, 40%);
   padding: 14px;
   border-radius: 5px;
   width: calc(70px * 5 + 10px * 4);
+}
+
+#win-cover {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  top: 0px;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(40, 80%, 40%);
+}
+
+#win-cover h1 {
+  padding: 0px;
+  margin: 0px;
+  font-size: 70px;
+}
+
+.invisible {
+  display: none !important;
+  filter: opacity(0) !important;
+}
+
+.fadeIn {
+  animation: fadeInFromNone 1s ease-out;
+  animation-fill-mode: forwards;
+}
+
+#restart {
+  background-color: hsl(80, 40%, 50%);
+  padding: 12px 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 1s;
+}
+
+#restart:active {
+  transform: scale(0.9);
+}
+
+#restart:hover {
+  filter: brightness(1.1);
+}
+
+@keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  10% {
+    display: flex;
+    opacity: 0;
+  }
+
+  100% {
+    display: flex;
+    background-color: hsla(40, 80%, 40%, 0.5);
+    opacity: 1;
+  }
 }

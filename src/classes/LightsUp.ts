@@ -3,6 +3,7 @@ class LightsUp {
   private answer: number = 0
   public state: number = 0
   public moveCount: number = 0
+  public static readonly completeState = 2**25 - 1
   private readonly boardSize: number = 5
   
   constructor() {
@@ -17,7 +18,7 @@ class LightsUp {
       }
     }
     
-    this.state = 2**25 - 1
+    this.state = LightsUp.completeState
     
     this.scramble()
   }
@@ -44,6 +45,10 @@ class LightsUp {
     this.answer ^= 2**(x*5 + y)
     
     ++this.moveCount
+  }
+  
+  public get win() {
+    return this.state === LightsUp.completeState
   }
   
   public getHint() {
