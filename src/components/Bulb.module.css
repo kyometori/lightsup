@@ -17,5 +17,17 @@
 }
 
 .bulbHint {
-  box-shadow: 0 0 10px white;
+  filter: 
+    drop-shadow(1px 1px 7px hsl(40, 70%, 80%, 50%))
+    drop-shadow(1px -1px 7px hsl(40, 70%, 80%, 50%))
+    drop-shadow(-1px 1px 7px hsl(40, 70%, 80%, 50%))
+    drop-shadow(-1px -1px 7px hsl(40, 70%, 80%, 50%));
+}
+
+.bulbHint:hover {
+  filter: 
+    drop-shadow(1px 1px 7px hsl(40, 70%, 85%, 60%))
+    drop-shadow(1px -1px 7px hsl(40, 70%, 85%, 60%))
+    drop-shadow(-1px 1px 7px hsl(40, 70%, 85%, 60%))
+    drop-shadow(-1px -1px 7px hsl(40, 70%, 85%, 60%));
 }
