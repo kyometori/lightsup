@@ -4,6 +4,8 @@ class LightsUp {
   public state: number = 0
   public moveCount: number = 0
   public static readonly completeState = 2**25 - 1
+  public hint = -1
+  public enableHint = false
   private readonly boardSize: number = 5
   
   constructor() {
@@ -45,6 +47,7 @@ class LightsUp {
     this.answer ^= 2**(x*5 + y)
     
     ++this.moveCount
+    if (this.enableHint) this.getHint()
   }
   
   public get win() {
@@ -52,9 +55,9 @@ class LightsUp {
   }
   
   public getHint() {
-    if (this.answer === 0) return -1
+    if (this.win || !this.enableHint) return this.hint = -1
     const i = this.answer & ~(this.answer - 1)
-    return Math.log2(i)
+    return this.hint = Math.log2(i)
   }
   
   public getBoardSize() { return this.boardSize }

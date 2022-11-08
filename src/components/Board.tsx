@@ -31,9 +31,9 @@ function Board({ refresh }: BoardProps) {
       <div id={style.board}>
         {game.board.flat().map((k, i) => (
           <Bulb 
-            x={~~(i/5)} 
-            y={i%5} 
+            coordinate={[~~(i/5), i%5]}
             onClick={flip} 
+            hint={i === game.hint}
             on={k} 
             key={i} 
           />
