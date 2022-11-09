@@ -32,6 +32,8 @@ class LightsUp {
       }
     }
     
+    if (this.state === LightsUp.completeState) this.scramble()
+    
     this.moveCount = 0
   }
   
