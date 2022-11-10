@@ -10,6 +10,8 @@ interface BoardProps {
 
 interface WinCoverProps {
   show: boolean
+  duration: number
+  bps: number
   restart: () => void
 }
 
@@ -38,13 +40,18 @@ function Board({ refresh }: BoardProps) {
             key={i} 
           />
         ))}
-        <WinCover show={game.win} restart={restart} />
+        <WinCover 
+          show={game.win} 
+          restart={restart} 
+          duration={game.duration}
+          bps={game.moveCount / game.duration * 1000}
+        />
       </div>
     </>
   )
 }
 
-function WinCover({ show, restart }: WinCoverProps) {
+function WinCover({ show, restart, duration, bps }: WinCoverProps) {
   return (
     <div 
       id={style['win-cover']} 
@@ -53,11 +60,24 @@ function WinCover({ show, restart }: WinCoverProps) {
         [style.fadeIn]: show
       })}>
       <h1>You Win!</h1>
+      <h2>Time spent: {resolveTimeFormat(duration)} ({~~(bps * 100) / 100} bps)</h2>
       <div id={style.restart} onClick={restart}>
         Restart
       </div>
     </div>
   )
 }
+
+function resolveTimeFormat(time: number) {
+  const millisecond = time % 1000
+  time = ~~(time / 1000)
+  const second = time % 60
+  time = ~~(time / 60)
+  const minute = time % 60
+  time = ~~(time / 60)
+  return `${minute}:${twoDigits(second)}.${millisecond}`
+}
+
+function twoDigits(a: number) { return a < 10 ? `0${a}` : `${a}` }
 
 export { Board }

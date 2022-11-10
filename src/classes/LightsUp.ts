@@ -6,6 +6,8 @@ class LightsUp {
   public static readonly completeState = 2**25 - 1
   public hint = -1
   public enableHint = false
+  private startTimestamp: number = Date.now()
+  private endTimestamp: number | null = null
   private readonly boardSize: number = 5
   
   constructor() {
@@ -35,6 +37,8 @@ class LightsUp {
     if (this.state === LightsUp.completeState) this.scramble()
     
     this.moveCount = 0
+    this.startTimestamp = Date.now()
+    this.endTimestamp = null
   }
   
   public flip(x: number, y: number) {
@@ -50,10 +54,16 @@ class LightsUp {
     
     ++this.moveCount
     if (this.enableHint) this.getHint()
+    if (this.win) this.endTimestamp = Date.now()
   }
   
   public get win() {
     return this.state === LightsUp.completeState
+  }
+  
+  public get duration() {
+    if (!this.endTimestamp) return Date.now() - this.startTimestamp
+    return this.endTimestamp - this.startTimestamp
   }
   
   public getHint() {
