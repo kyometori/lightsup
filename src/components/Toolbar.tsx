@@ -16,7 +16,7 @@ function Toolbar({ refresh }: ToolbarProps) {
   
   
   const restart = () => {
-    game.scramble()
+    game.renewGame()
     refresh()
   }
   

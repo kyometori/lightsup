@@ -24,7 +24,7 @@ class LightsUp {
     
     this.state = LightsUp.completeState
     
-    this.scramble()
+    this.renewGame()
   }
   
   public scramble() {
@@ -35,6 +35,10 @@ class LightsUp {
     }
     
     if (this.state === LightsUp.completeState) this.scramble()
+  }
+  
+  public renewGame() {
+    this.scramble()
     
     this.moveCount = 0
     this.startTimestamp = Date.now()

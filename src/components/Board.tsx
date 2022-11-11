@@ -24,7 +24,7 @@ function Board({ refresh }: BoardProps) {
   }
   
   const restart = () => {
-    game.scramble()
+    game.renewGame()
     refresh()
   }
   
