@@ -22,7 +22,7 @@ function Toolbar({ refresh }: ToolbarProps) {
   
   const toggleHint = () => {
     setShow(s => !s)
-    game.enableHint = !game.enableHint
+    game.toggleHint()
     game.getHint()
     refresh()
   }

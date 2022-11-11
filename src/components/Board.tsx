@@ -12,6 +12,7 @@ interface WinCoverProps {
   show: boolean
   duration: number
   bps: number
+  usedHint: boolean
   restart: () => void
 }
 
@@ -45,13 +46,14 @@ function Board({ refresh }: BoardProps) {
           restart={restart} 
           duration={game.duration}
           bps={game.moveCount / game.duration * 1000}
+          usedHint={game.useHintThisGame}
         />
       </div>
     </>
   )
 }
 
-function WinCover({ show, restart, duration, bps }: WinCoverProps) {
+function WinCover({ show, restart, duration, bps, usedHint }: WinCoverProps) {
   return (
     <div 
       id={style['win-cover']} 
@@ -60,6 +62,7 @@ function WinCover({ show, restart, duration, bps }: WinCoverProps) {
         [style.fadeIn]: show
       })}>
       <h1>You Win!</h1>
+      {usedHint && <div>...with the help of hints</div>}
       <h2>Time spent: {resolveTimeFormat(duration)} ({~~(bps * 100) / 100} bps)</h2>
       <div id={style.restart} onClick={restart}>
         Restart

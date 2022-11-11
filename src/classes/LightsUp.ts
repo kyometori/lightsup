@@ -6,6 +6,7 @@ class LightsUp {
   public static readonly completeState = 2**25 - 1
   public hint = -1
   public enableHint = false
+  public useHintThisGame: boolean = false
   private startTimestamp: number = Date.now()
   private endTimestamp: number | null = null
   private readonly boardSize: number = 5
@@ -42,6 +43,7 @@ class LightsUp {
     
     this.moveCount = 0
     this.startTimestamp = Date.now()
+    this.useHintThisGame = this.enableHint
     this.endTimestamp = null
   }
   
@@ -59,6 +61,11 @@ class LightsUp {
     ++this.moveCount
     if (this.enableHint) this.getHint()
     if (this.win) this.endTimestamp = Date.now()
+  }
+  
+  public toggleHint() {
+    this.enableHint = !this.enableHint
+    if (this.enableHint && !this.win) this.useHintThisGame = true
   }
   
   public get win() {
