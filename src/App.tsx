@@ -9,9 +9,11 @@ function App() {
   
   return (
     <>
-      <h1>Lights Up!</h1>
-      <Toolbar refresh={refresh} />
-      <Board refresh={refresh} />
+      <h1 id="title">Lights Up!</h1>
+      <div id="game">
+        <Toolbar refresh={refresh} />
+        <Board refresh={refresh} />
+      </div>
     </>
   );
 }

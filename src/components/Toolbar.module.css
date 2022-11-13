@@ -26,6 +26,11 @@
   transition: all 0.5s;
 }
 
+.right {
+  margin-right: auto;
+  margin-left: 15px;
+}
+
 #toolbar > div.clickable:active {
   transform: scale(0.9);
 }

@@ -1,0 +1,14 @@
+body {
+  background-color: hsl(50, 30%, 50%);
+  font-family: Helvetica, Arial, Verdana, Tahoma, Garamond, sans-serif;
+}
+#root {
+  display: grid;
+  grid-template-rows: 120px 1fr;
+  justify-content: center;
+}
+
+#title {
+  text-align: center;
+  font-size: 40px;
+}

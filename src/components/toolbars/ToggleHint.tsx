@@ -1,4 +1,5 @@
 import style from '../Toolbar.module.css'
+import classnames from 'classnames'
 
 interface ToggleHintProps {
   show: boolean
@@ -7,7 +8,7 @@ interface ToggleHintProps {
 
 function ToggleHint({ show, toggleHint }: ToggleHintProps) {
   return (
-    <div className={style.clickable} onClick={toggleHint}>
+    <div className={classnames(style.clickable, style.right)} onClick={toggleHint}>
       <div>Hint</div>
       <div>{show ? 'On' : 'Off' }</div>
     </div>
